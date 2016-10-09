@@ -1,4 +1,4 @@
-#mac bak files
+# Mac bak files
 *.DS_Store
 
 # Built application files
@@ -12,6 +12,7 @@
 *.class
 
 # Generated files
+.idea/
 bin/
 gen/
 out/
