@@ -1,7 +1,6 @@
 package com.meizu.power.colorflipper;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,12 +15,16 @@ import android.widget.Button;
 public class ColorFlipper extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "ColorFlipper";
+    private int mUiMode = Configuration.UI_MODE_NIGHT_UNDEFINED;
+    private NightModeHelper mHelper = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_flipper);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        initHelper();
         initViews();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -34,23 +37,25 @@ public class ColorFlipper extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    private void initHelper() {
+        if (null == mHelper) {
+            mHelper = new NightModeHelper(this, Configuration.UI_MODE_NIGHT_NO);
+        }
+    }
+
     private void initViews() {
         Button bt1 = (Button) findViewById(R.id.button1);
-        bt1.setBackgroundColor(0Xffff0000);   //yellow
         bt1.setOnClickListener(this);
 
         Button bt2 = (Button) findViewById(R.id.button2);
-        bt2.setBackground(getResources().getDrawable(R.drawable.red, null));
-        bt2.setTextColor(0Xffffff00);//  must be 0xxxxxxxxx
+//        bt2.setBackground(getResources().getDrawable(R.drawable.red, null));
+//        bt2.setTextColor(0Xffffff00);//  must be 0xxxxxxxxx
         bt2.setOnClickListener(this);
 
         Button bt3 = (Button) findViewById(R.id.button3);
-        ColorStateList color = getResources().getColorStateList(R.color.black);
-        bt3.setTextColor(color);
         bt3.setOnClickListener(this);
 
         Button bt4 = (Button) findViewById(R.id.button4);
-        bt4.setTextColor(Color.RED);
         bt4.setOnClickListener(this);
     }
 
@@ -59,10 +64,12 @@ public class ColorFlipper extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
         switch (id) {
             case R.id.button1:
-                Log.i(TAG, " jump to button activity!");
+                Log.i(TAG, " jump to NOT night mode!");
+                handleNotNightMode();
                 break;
             case R.id.button2:
-                Log.i(TAG, " jump to textview activity!");
+                Log.i(TAG, " jump to night mode!");
+                handleNightMode();
                 break;
             case R.id.button3:
                 Log.i(TAG, " jump to editview activity!");
@@ -73,6 +80,14 @@ public class ColorFlipper extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+    }
+
+    public void handleNightMode() {
+        mHelper.night();
+    }
+
+    public void handleNotNightMode() {
+        mHelper.notNight();
     }
 
     @Override

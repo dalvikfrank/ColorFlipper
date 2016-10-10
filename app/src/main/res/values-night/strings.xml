@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ColorFlipper</string>
+    <string name="action_settings">Settings_night</string>
+    <string name="button_entry">Button_night</string>
+    <string name="text_view_entry">TextView_night</string>
+    <string name="edit_view_entry">EditView_night</string>
+    <string name="list_view_entry">ListView_night</string>
+    <string name="Button1">Button_night</string>
+    <string name="Button2">Button_night</string>
+    <string name="Button3">Button_night</string>
+    <string name="Button4">Button_night</string>
+</resources>

@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color><!--黑色 -->
     <color name="white">#FFFFFF</color><!--白色 -->
     <color name="yellow">#FFFF00</color><!--黄色 -->
     <color name="gold">#FFD700</color><!--金色 -->
@@ -18,5 +19,7 @@
     <color name="purple">#800080</color><!--紫色 -->
     <color name="cyan">#00FFFF</color><!--青色 -->
     <color name="green">#008000</color><!--绿色 -->
-    <color name="black">#000000</color><!--黑色 -->
+    <!--settings specific night and notnight-->
+    <color name="ActivityBackground">@color/white</color>
+    <color name="FontColor">@color/black</color>
 </resources>
